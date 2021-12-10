@@ -3,13 +3,30 @@
 	"description": "Rewarding your green lifestyle",
 	"version": "1.0",
 	"manifest_version": 3,
+
 	"background": {
-		"service_worker": "background.js"
+		"service_worker": "firebase.js"
 	},
 	"action": {
 		"default_popup": "popup.html"
 },
 	"permissions": [
-		"storage"
-	]
+		"storage",
+		"activeTab",
+        "tabs"
+	],
+	"host_permissions":[
+		"<all_urls>"
+	],
+	"content_scripts": [
+        {
+            "matches":["<all_urls>"],
+            "js":["app.js"],
+            "run_at":"document_end"
+        }
+    ],
+	"sandbox": {
+		"pages": ["background.html"]
+	}
+
 }
