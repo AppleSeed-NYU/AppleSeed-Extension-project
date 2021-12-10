@@ -1,4 +1,11 @@
-chrome.runtime.sendMessage({command: "fetch"}, (response) =>{
+
+var domain = window.location.hostname;
+
+domain = domain.replace("http://","").replace("https://","").replace("www.","").split(/[/?#]/)[0];
+console.log("From Appleseed--", domain)
+
+chrome.runtime.sendMessage({command: "fetch", data:{domain: domain}}, (response) =>{
+    // response from db (bg.js --> firebase.js)
     showData(response.data);
 });
 

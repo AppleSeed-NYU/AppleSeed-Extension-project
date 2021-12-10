@@ -1,7 +1,7 @@
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
-// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics.js";
-
+// use firebase.js as backgroud.js
+console.log("firebase")
 try{ 
+  // version 8.10.0
   self.importScripts('firebase/firebase-app.js', 'firebase/firebase-database.js');
 
   var firebaseConfig = {
@@ -16,39 +16,40 @@ try{
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  // const analytics = getAnalytics(app);
   console.log(firebase);
 
-  var db = firebase.firestore();
+  // var db = firebase.firestore();
 
-
+ // send to resp to app.js
   chrome.runtime.onMessage.addListener((msg, sender, resp) => {
     if(msg.command == "post"){
+        var domain = msg.data.domain
+        console.log("domain-post", domain)
 
-        db.collection("users").doc("test-doc").set({
-          data: msg.data
-        })
-        .then(function(){
-          console.log('Document successfully written');
-        })
-        .catch(function(error){
-          console.error('Error written in', error)
-        });
+        // db.collection("users").doc("test-doc").set({
+        //   data: msg.data
+        // })
+        // .then(function(){
+        //   console.log('Document successfully written');
+        // })
+        // .catch(function(error){
+        //   console.error('Error written in', error)
+        // });
     }
     if(msg.command == "fetch"){
-
-      var docRef = db.collection("users").doc("u1");
+      var domain = msg.data.domain
+      console.log("domain-fetch", domain)
+      // var docRef = db.collection("users").doc("u1");
       
-      docRef.get().then(function(doc){
+      // docRef.get().then(function(doc){
        
-      });
+      // });
 
   }
 
 
 });
-
-
 }catch(e){
   console.log(e);
 }
