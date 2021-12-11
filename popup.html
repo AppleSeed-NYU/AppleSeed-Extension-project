@@ -6,14 +6,17 @@
         <script src="jquery-3.6.0.min.js"></script>
         <script src="popup.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+		<meta http-equiv="Content-Security-Policy" content="script-src https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'">
+		
+
+	</head>
     <body>
 		<!-- Testing class labels with our css stylesheet. -->
 		<div class="container">
         <h2 id="greet">AppleSeed</h2>
-        <button id="myButton" type="button" class="btn btn-warning">Earn up to 5 energy points!</button>
+        <button id="_points__button" href="popup.js" type="button" class="btn btn-warning">Earn up to 5 energy points!</button>
         <!-- onclick="changePopup()"-->
-		<script src="popup.js"></script>
+		<!-- <script ></script> -->
         <body input type="button" value="Close this window"> Remind me later</body>
         <!-- value="Close this window" onclick="self.close()" -->
 		</div>

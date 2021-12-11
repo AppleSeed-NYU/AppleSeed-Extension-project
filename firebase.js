@@ -20,34 +20,82 @@ try{
   console.log(firebase);
 
   // var db = firebase.firestore();
+  var database = firebase.database();
+  console.log("database",database);
 
- // send to resp to app.js
-  chrome.runtime.onMessage.addListener((msg, sender, resp) => {
-    if(msg.command == "post"){
-        var domain = msg.data.domain
-        console.log("domain-post", domain)
-
-        // db.collection("users").doc("test-doc").set({
-        //   data: msg.data
-        // })
-        // .then(function(){
-        //   console.log('Document successfully written');
-        // })
-        // .catch(function(error){
-        //   console.error('Error written in', error)
-        // });
+//  test 
+ chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.greeting === "hello")
+      sendResponse({farewell: "goodbye"});
+    return true
     }
-    if(msg.command == "fetch"){
-      var domain = msg.data.domain
-      console.log("domain-fetch", domain)
-      // var docRef = db.collection("users").doc("u1");
-      
-      // docRef.get().then(function(doc){
-       
-      // });
+);
 
+
+
+
+  // read 
+  var starCountRef = firebase.database().ref('/');
+  starCountRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    // updateStarCount(postElement, data);
+  });
+//  write
+  function writeUserData(userId, name, email, imageUrl) {
+    firebase.database().ref('users/' + userId).set({
+      username: name,
+      email: email,
+      profile_picture : imageUrl
+    });
   }
 
+  // send to resp to app.js
+  // ```  
+  //   msg: all param in app.js's sendMessage function
+  //   response: send response (points) to app.js's sendMessage function
+  // ```
+  chrome.runtime.onMessage.addListener((msg, sender, response) => {
+    console.log(msg)
+    if(msg.command == "fetch"){
+      var domain = msg.data.domain;
+      console.log("domain:", domain);
+      var enc_domain = btoa(domain);
+      firebase.database().ref('/').once('value').then(function(snapshot){
+        response({type: "result", status: "success", data: snapshot.val(), request: msg})
+    });
+      firebase.database().ref('/domain/' + enc_domain).once('value').then(function(snapshot){
+          response({type: "result", status: "success", data: snapshot.val(), request: msg})
+      });
+
+    if(msg.command == "post"){
+        var domain = msg.data.domain;
+        var enc_domain = btoa(domain);
+        var user = msg.data.user;
+        var points = msg.data.points;
+        console.log("domain-post", domain);
+        try{
+          var newPost = firebase.database().ref('/').push().set({
+            user: user,
+            points: points
+
+          });
+          response({type: "result", status: "success", data: snapshot.val(), request: msg});
+
+        }catch(e){
+          console.log("error:", e);
+          response({type: "result", status: "error", data: snapshot.val(), request: msg});
+        }
+
+
+    }
+    
+
+  }
+  return true;
 
 });
 }catch(e){
@@ -56,3 +104,7 @@ try{
 
 
 
+// triggered when user click purchase 
+// Achieve that by accessing the DOM, but service workers do not have access to windows or the DOM. 
+// If your extension needs that, you can use libraries like jsdom or use chrome.windows.create and chrome.tabs.create. 
+// It depends on your usage and what fits your needs.
