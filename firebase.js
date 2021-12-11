@@ -23,6 +23,21 @@ try{
   var database = firebase.database();
   console.log("database",database);
 
+//  test 
+ chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.greeting === "hello")
+      sendResponse({farewell: "goodbye"});
+    return true
+    }
+);
+
+
+
+
   // read 
   var starCountRef = firebase.database().ref('/');
   starCountRef.on('value', (snapshot) => {
@@ -44,6 +59,7 @@ try{
   //   response: send response (points) to app.js's sendMessage function
   // ```
   chrome.runtime.onMessage.addListener((msg, sender, response) => {
+    console.log(msg)
     if(msg.command == "fetch"){
       var domain = msg.data.domain;
       console.log("domain:", domain);
@@ -88,3 +104,7 @@ try{
 
 
 
+// triggered when user click purchase 
+// Achieve that by accessing the DOM, but service workers do not have access to windows or the DOM. 
+// If your extension needs that, you can use libraries like jsdom or use chrome.windows.create and chrome.tabs.create. 
+// It depends on your usage and what fits your needs.

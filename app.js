@@ -4,6 +4,19 @@ var domain = window.location.hostname;
 domain = domain.replace("http://","").replace("https://","").replace("www.","").split(/[/?#]/)[0];
 console.log("From Appleseed--", domain)
 
+
+
+chrome.runtime.sendMessage({greeting: "hello"}, function(response){
+    // response from db (firebase.js)
+    console.log(response);
+    console.log('response from database', response);
+    console.log(response.farewell);
+   
+});
+
+
+
+// maybe the command is defined in fountend
 chrome.runtime.sendMessage({command: "fetch", data: {domain: domain}}, (response) =>{
     // response from db (bg.js --> firebase.js)
     showData(response.data);
