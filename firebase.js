@@ -23,6 +23,11 @@ try{
   var database = firebase.database();
   console.log("database",database);
 
+
+  // chrome.system.display.getInfo("DOMContentLoaded",(event)=>{
+  //   console.log("DOM Loaded ")
+  // })
+
 //  test 
  chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -45,13 +50,47 @@ try{
     // updateStarCount(postElement, data);
   });
 //  write
-  function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
-  }
+var installNode = window.document.getElementById('my-chrome-extension-installed');
+if (installNode) {
+  console.log('Chrome extension is installed! Here is the infomation: ' + installNode.innerText);
+} else {
+  console.log('Chrome extention is not installed yet...');
+}
+// 监听installNode的EventFromChrome事件
+installNode.addEventListener('EventFromChrome', function() {
+  var data = JSON.parse(installNode.innerText);
+  console.log(data.msg);
+});
+
+// document.getElementById("updateNow").onclick = function writeUserData(userId, name, email, imageUrl) {
+//     console.log("writing user data")
+//     firebase.database().ref('users/' + userId).set({
+//       username: name,
+//       email: email,
+//       profile_picture : imageUrl
+//     });
+//   }
+
+
+// var myButton = document.getElementById("updateNow");
+// console.log("button", myButton)
+// if(myButton){
+//     console.log(" button clicked")
+//     myButton.addEventListener("click", changePopup, false);
+// }
+// function changePopup(){
+//     chrome.action.setPopup({
+//        popup: "second_page.html"
+//     });
+// }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   var btn = document.getElementById('updateNow');
+//   if (btn) {
+//     console.log(btn)
+//     btn.addEventListener('click', changePopup);
+//   }
+// })
 
   // send to resp to app.js
   // ```  

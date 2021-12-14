@@ -3,18 +3,22 @@
     <head>
 		<!-- linking to our stylesheet -->
         <title>AppleSeed</title>
-        <script src="jquery-3.6.0.min.js"></script>
-        <script src="popup.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="style.css">
-		<meta http-equiv="Content-Security-Policy" content="script-src https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'">
-		
-
+		 <!-- <meta http-equiv="Content-Security-Policy" content="script-src https://www.gstatic.com/ https://ssl.gstatic.com https://*.firebaseio.com https://www.googleapis.com firebas.js 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes' 'nonce-2726c7f26c' " >  -->
+         <meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-2726c7f26c' " > 
+         <script nonce="2726c7f26c" src="jquery-3.6.0.min.js"></script>
+         <script nonce="2726c7f26c" src="popup.js"></script>
+         <script nonce="2726c7f26c" src="firebase.js"></script>
 	</head>
     <body>
+        <script nonce="2726c7f26c" src="jquery-3.6.0.min.js"></script>
+         <script nonce="2726c7f26c" src="popup.js"></script>
+         <script nonce="2726c7f26c" src="firebase.js"></script>
 		<!-- Testing class labels with our css stylesheet. -->
 		<div class="container">
         <h2 id="greet">AppleSeed</h2>
-        <button id="_points__button" href="popup.js" type="button" class="btn btn-warning">Earn up to 5 energy points!</button>
+        <button nonce="2726c7f26c" id="points__button" type="button" class="btn btn-warning">Earn up to 5 energy points!</button>
         <!-- onclick="changePopup()"-->
 		<!-- <script ></script> -->
         <body input type="button" value="Close this window"> Remind me later</body>

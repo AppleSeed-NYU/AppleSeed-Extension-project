@@ -1,11 +1,10 @@
 
 
 
-var el = document.getElementById("_points__button");
-if(el){
-    el.addEventListener("click", chrome.action.setPopup({
-        popup: "second_page.html"
-     }));
+var myButton = document.getElementById("updateNow");
+if(myButton){
+    console.log("mybutton", myButton)
+    myButton.addEventListener("click", changePopup);
 }
 function changePopup(){
     chrome.action.setPopup({
