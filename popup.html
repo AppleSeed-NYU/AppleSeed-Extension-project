@@ -3,11 +3,12 @@
     <head>
 		<!-- linking to our stylesheet -->
         <title>AppleSeed</title>
-        <script src="jquery-3.6.0.min.js"></script>
-        <script src="popup.js"></script>
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
-		<meta http-equiv="Content-Security-Policy" content="script-src https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'">
-	</head>
+		<meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-2726c7f26c' " > 
+         <script nonce="2726c7f26c" src="jquery-3.6.0.min.js"></script>
+         <script nonce="2726c7f26c" src="popup.js"></script>
+         <script nonce="2726c7f26c" src="firebase.js"></script>
+        </head>
     <body>
 		<div class="container">
             <div class="upper-section">
@@ -46,11 +47,14 @@
                     </p>
                 </div>
                 <div class="bsbuttons">
-                    <button></button>
+                    <button nonce="2726c7f26c" id="points__button" type="button" class="btn btn-warning">Earn up to 5 energy points!</button>
                     <button></button>
                     <button></button>
                 </div>
             </div>
 		</div>
+        <script nonce="2726c7f26c" src="jquery-3.6.0.min.js"></script>
+        <script nonce="2726c7f26c" src="popup.js"></script>
+        <script nonce="2726c7f26c" src="firebase.js"></script> 
     </body>
 </html>
