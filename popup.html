@@ -5,22 +5,52 @@
         <title>AppleSeed</title>
         <script src="jquery-3.6.0.min.js"></script>
         <script src="popup.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<meta http-equiv="Content-Security-Policy" content="script-src https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'">
-		
-
 	</head>
     <body>
-		<!-- Testing class labels with our css stylesheet. -->
 		<div class="container">
-        <h2 id="greet">AppleSeed</h2>
-        <button id="_points__button" href="popup.js" type="button" class="btn btn-warning">Earn up to 5 energy points!</button>
-        <!-- onclick="changePopup()"-->
-		<!-- <script ></script> -->
-        <body input type="button" value="Close this window"> Remind me later</body>
-        <!-- value="Close this window" onclick="self.close()" -->
+            <div class="upper-section">
+                <!-- title -->
+                <p id="u-s-title">
+                    Appleseed
+                </p>
+                <p id="u-s-subtitle">
+                    <i> Collect ... points to finish </i> growing your tree
+                </p>
+            </div>
+            <div class="mid-section">
+                <!-- image -->
+                <div id="m-s-image">
+                    <img src="Sprites/sprites/Spr_background/db2ba4ce-b251-4850-b7ae-5f46691dec94.png" alt="" style="width: 100%; height: 100%;">
+                </div>
+                <!-- points -->
+                <div id="m-s-subtext">
+                    <p>
+                        Total Points:
+                    </p>
+                    <p>
+                        New Total:
+                    </p>
+                </div>
+            </div>
+            <!-- section divider -->
+            <div class="section-divider">
+                <hr class="solid" style="border: 1px solid rgb(178, 171, 171);">
+            </div>
+            <!-- Actions -->
+            <div class="bottom-section">
+                <div class="bstitle">
+                    <p class="bstitlesub">
+                        What would you like to do?
+                    </p>
+                </div>
+                <div class="bsbuttons">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
 		</div>
     </body>
-
-
 </html>
