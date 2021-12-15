@@ -1,13 +1,5 @@
 
 // always waits the document to be loaded when shown
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // const analytics = getAnalytics(app);
-  console.log("firebase", firebase);
-
-  // var db = firebase.firestore();
-  var database = firebase.database();
-  console.log("database",database);
 
 // if( document.readyState !== 'loading' ) {
 //     console.log( 'document is already ready, just execute code here' );
@@ -56,7 +48,9 @@ if(myButton){
 //       trees : trees
 //     });
 //   }
+ 
 
+// test function
 function writeToDatabase(){
     console.log("writing user data")
     firebase.database().ref('/' ).set({
