@@ -15,12 +15,15 @@ Our chrome extension would generates digital points whenever a user purchases pr
 
 ## Frontend
 When user intall our extention, a digital game would be shown on the extension. So that they would have a sense of enagement.
-![image](https://user-images.githubusercontent.com/50645596/146233633-7627a799-5708-4298-9684-4c1654b70265.png)
+![image](https://user-images.githubusercontent.com/50645596/146235872-41e21f26-3e9b-491b-a376-9e3ac404fbf1.png)
+
 
 ## Backend
 After users make a consent to our extension, we are allowed to collect user information, such as their user account and purchase history.
 We store those data to firebase which would make sure the secutity of their information. 
 Here is a simple structure of the data we are going to collect. We are able to read and write them to database by our extension.
+
+
 ![image](https://user-images.githubusercontent.com/50645596/146235664-2a261a83-8ac0-4bfe-859f-f49735b7cd89.png)
 
 
