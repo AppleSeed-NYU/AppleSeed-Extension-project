@@ -5,18 +5,9 @@ console.log("From Appleseed--", domain)
 
 
 
-chrome.runtime.sendMessage({greeting: "hello"}, function(response){
-    // response from db (firebase.js)
-    console.log(response);
-    console.log('response from database', response);
-    console.log(response.farewell);
-   
-});
-
-
 var targetExtensionId = "klbcnkjjoboefpakcmgfcbfamjokhjaf";
 chrome.runtime.sendMessage(targetExtensionId, {type: 'MsgFromPage', msg: 'Hello, I am page~', greeting: "hello"}, function(response) {
-    console.log(response);
+    console.log("response",response);
     showData(response.data);
   });
 
