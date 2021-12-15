@@ -6,7 +6,7 @@ console.log("This is the first line of app.js. Message From Appleseed--", domain
 
 
 var targetExtensionId = "klbcnkjjoboefpakcmgfcbfamjokhjaf";
-chrome.runtime.sendMessage(targetExtensionId, {type: 'MsgFromPage', command: "post", data:{domain: domain, user: user}, msg: 'Hello, I am page~', greeting: "hello"}, function(response) {
+chrome.runtime.sendMessage(targetExtensionId, {type: 'MsgFromPage', command: "post", data:{domain: domain, user: "user"}, msg: 'Hello, I am page~', greeting: "hello"}, function(response) {
     console.log("Response From Appleseed--",response);
 
   });

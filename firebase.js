@@ -37,7 +37,7 @@ try{
                 "from a content script:" + sender.tab.url :
                 "from the extension");
     console.log("writing user data")
-    try{  
+    // try{  
       firebase.database().ref('/' ).set({
         users: {"info":
         { id: "2",
@@ -45,15 +45,15 @@ try{
         points: 19,
         trees : {"info": {
           id: "5",
-          size: "13"
-      }}} 
-      }
-    });   
-      response({type: "result", status: "success", data: snapshot.val(), request: msg});
-    }catch(e){
-      console.log("error:", e);
-      response({type: "result", status: "error", data: snapshot.val(), request: msg});
-    }        
+          size: "13"}} }}
+      })
+    //   }
+    // });   
+    //   response({type: "result", status: "success", data: snapshot.val(), request: msg});
+    // }catch(e){
+    //   console.log("error:", e);
+    //   response({type: "result", status: "error", data: snapshot.val(), request: msg});
+    // }        
     if (request.greeting === "hello")
       sendResponse({tyep: 'MsgFromChrome', msg: 'Hello, I am chrome extension~', farewell: "goodbye"});
     return true
@@ -70,37 +70,37 @@ try{
   });
 
 
-//   chrome.runtime.onMessage.addListener((msg, sender, response) => {
-//     console.log(msg)
-//     if(msg.command == "fetch"){
-//       var domain = msg.data.domain;
-//       console.log("domain:", domain);
-//       var enc_domain = btoa(domain);
+  chrome.runtime.onMessage.addListener((msg, sender, response) => {
+    console.log(msg)
+    if(msg.command == "fetch"){
+      var domain = msg.data.domain;
+      console.log("domain:", domain);
+      var enc_domain = btoa(domain);
 
-//     if(msg.command == "post"){
-//         var domain = msg.data.domain;
-//         var enc_domain = btoa(domain);
-//         var user = msg.data.user;
-//         var points = msg.data.points;
-//         console.log("domain-post", domain);
-//         try{
-//           var newPost = firebase.database().ref('/').push().set({
-//             user: user,
-//             points: points
+    if(msg.command == "post"){
+        var domain = msg.data.domain;
+        var enc_domain = btoa(domain);
+        var user = msg.data.user;
+        var points = msg.data.points;
+        console.log("domain-post", domain);
+        try{
+          var newPost = firebase.database().ref('/').push().set({
+            user: user,
+            points: points
 
-//           });
-//           response({type: "result", status: "success", data: snapshot.val(), request: msg});
+          });
+          response({type: "result", status: "success", data: snapshot.val(), request: msg});
 
-//         }catch(e){
-//           console.log("error:", e);
-//           response({type: "result", status: "error", data: snapshot.val(), request: msg});
-//         }
-//     }
+        }catch(e){
+          console.log("error:", e);
+          response({type: "result", status: "error", data: snapshot.val(), request: msg});
+        }
+    }
 
-//   }
-//   return true;
+  }
+  return true;
 
-// });
+});
 }catch(e){
   console.log(e);
 }
